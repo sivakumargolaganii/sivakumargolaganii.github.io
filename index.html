@@ -177,9 +177,94 @@
       .contact-band { padding: 28px 20px; }
       .nav-cta { display: none; }
     }
+
+    /* Premium layer */
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 50; background: linear-gradient(90deg, var(--gold), #f3d58a, var(--gold)); box-shadow: 0 0 12px rgba(212,176,106,.7); }
+    header { transition: background .3s ease, box-shadow .3s ease; }
+    header.scrolled { background: rgba(10,31,60,.82); backdrop-filter: saturate(160%) blur(14px); box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
+    .links a { position: relative; }
+    .links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform .25s ease; }
+    .links a:hover::after, .links a.active::after { transform: scaleX(1); }
+    .links a.active { color: #fff; }
+
+    .hero { position: relative; overflow: hidden; isolation: isolate; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 80%); }
+    .orb { position: absolute; z-index: -1; border-radius: 50%; filter: blur(70px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; pointer-events: none; }
+    .orb.o1 { width: 420px; height: 420px; background: #1d5fa8; top: -140px; right: 8%; }
+    .orb.o2 { width: 320px; height: 320px; background: #b8913f; bottom: -120px; left: -80px; opacity: .28; animation-duration: 22s; }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px, 30px) scale(1.12); } }
+    .hero h1 { background: linear-gradient(100deg, #fff 0%, #fff 55%, #f1dca8 75%, #fff 95%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 7s ease-in-out infinite; }
+    .hero h1 .nick { -webkit-text-fill-color: var(--gold); }
+    @keyframes sheen { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+    .btn.gold { box-shadow: 0 10px 24px -10px rgba(212,176,106,.8); transition: transform .2s ease, box-shadow .2s ease; }
+    .btn.gold:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(212,176,106,.9); }
+    .btn.outline { transition: background .2s ease, border-color .2s ease; }
+    .btn.outline:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+
+    .profile-card { position: relative; background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.03)); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.12); }
+    .profile-card::before { content: ""; position: absolute; inset: -1px; border-radius: 19px; padding: 1px; background: linear-gradient(140deg, rgba(212,176,106,.8), transparent 35%, transparent 65%, rgba(110,168,230,.6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+    .avatar-ring { position: relative; width: 176px; height: 176px; margin: 0 auto; border-radius: 50%; padding: 5px; background: conic-gradient(from 0deg, var(--gold), #f3d58a, #8a6a2a, var(--gold), #f3d58a, var(--gold)); animation: spin 9s linear infinite; }
+    .avatar-ring .avatar { width: 166px; height: 166px; border: 4px solid var(--navy); outline: 0; animation: spin 9s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .verified { display: inline-flex; align-items: center; gap: 6px; margin: 10px auto 0; font-size: 12px; font-weight: 600; color: var(--gold); background: rgba(212,176,106,.12); border: 1px solid rgba(212,176,106,.35); border-radius: 999px; padding: 4px 12px; }
+    .center { text-align: center; }
+
+    .metrics { overflow: hidden; }
+    .metric { position: relative; }
+    .metric b { background: linear-gradient(135deg, var(--accent), #2b7fd4); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 38px; }
+    .metric::before { content: ""; position: absolute; left: 24px; top: 0; width: 36px; height: 3px; background: var(--gold); border-radius: 0 0 3px 3px; }
+
+    .trust { padding: 8px 0 40px; }
+    .trust .label { text-align: center; text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 16px; }
+    .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+    .marquee-track { display: flex; gap: 14px; width: max-content; animation: scroll 40s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span { white-space: nowrap; font-weight: 700; font-size: 15px; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 18px; }
+    .marquee-track span i { font-style: normal; color: var(--gold); margin-right: 8px; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    .kicker { display: inline-flex; align-items: center; gap: 10px; }
+    .kicker::after { content: ""; width: 40px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .card { position: relative; overflow: hidden; }
+    .card::before { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--gold), #f3d58a, var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 24px 44px -26px rgba(10,31,60,.55); border-color: rgba(184,145,63,.45); }
+    .icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: var(--gold); box-shadow: 0 10px 20px -12px rgba(10,31,60,.8); }
+    .icon svg { width: 24px; height: 24px; }
+    .chip { transition: border-color .2s ease, color .2s ease; }
+    .card:hover .chip { border-color: rgba(184,145,63,.4); }
+
+    .timeline { position: relative; padding-left: 34px; }
+    .timeline::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--gold), var(--accent) 60%, transparent); }
+    .job { position: relative; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .job::before { content: ""; position: absolute; left: -31px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 3px solid var(--gold); box-shadow: 0 0 0 4px rgba(212,176,106,.18); }
+    .job:first-child::before { background: var(--gold); }
+    .job:hover { transform: translateX(4px); box-shadow: 0 18px 36px -26px rgba(10,31,60,.5); border-color: rgba(184,145,63,.4); }
+    .pillar { transition: transform .2s ease; }
+    .pillar:hover { transform: translateX(4px); }
+    .cert .seal { background: linear-gradient(135deg, var(--navy), var(--navy-2)); box-shadow: inset 0 0 0 1px rgba(212,176,106,.5); }
+    .contact-band { position: relative; overflow: hidden; }
+    .contact-band::after { content: ""; position: absolute; width: 380px; height: 380px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(212,176,106,.35), transparent 65%); pointer-events: none; }
+    .contact-band > * { position: relative; z-index: 1; }
+    .to-top { position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(212,176,106,.5); background: var(--navy); color: var(--gold); font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease; box-shadow: 0 10px 24px -10px rgba(0,0,0,.6); }
+    .to-top.show { opacity: 1; transform: none; }
+
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 620px) {
+      .timeline { padding-left: 24px; }
+      .timeline::before { left: 4px; }
+      .job::before { left: -26px; }
+      .orb.o1 { width: 260px; height: 260px; }
+    }
   </style>
 </head>
 <body>
+  <div class="progress" id="progress"></div>
   <header>
     <div class="wrap">
       <nav>
@@ -201,6 +286,7 @@
   </header>
 
   <div class="hero" id="top">
+    <span class="orb o1"></span><span class="orb o2"></span>
     <div class="wrap">
       <div class="hero-grid">
         <div>
@@ -219,9 +305,10 @@
           </div>
         </div>
         <aside class="profile-card">
-          <div class="avatar"><img src="profile.webp" alt="Sivakumar Golagani" width="160" height="160"></div>
+          <div class="avatar-ring"><div class="avatar"><img src="profile.webp" alt="Sivakumar Golagani" width="166" height="166"></div></div>
           <h3>Sivakumar Golagani (SK)</h3>
           <div class="loc">Visakhapatnam, India · Global delivery</div>
+          <div class="center"><span class="verified">✔ PMP · PSM · ISTQB · AWS certified</span></div>
           <ul class="facts">
             <li><span>Current role</span><span>VP, Dev &amp; QA Ops · KQI</span></li>
             <li><span>Focus</span><span>SaaS · Digital banking · AI platforms</span></li>
@@ -239,10 +326,22 @@
 
   <div class="wrap">
     <div class="metrics">
-      <div class="metric"><b>18+</b><span>Years in fintech &amp; IT delivery</span></div>
-      <div class="metric"><b>10+</b><span>Banks &amp; financial institutions served</span></div>
-      <div class="metric"><b>1M+</b><span>Virtual prepaid cards in year one</span></div>
-      <div class="metric"><b>100K+</b><span>Daily transactions on a national switch</span></div>
+      <div class="metric"><b data-count="18" data-suffix="+">18+</b><span>Years in fintech &amp; IT delivery</span></div>
+      <div class="metric"><b data-count="10" data-suffix="+">10+</b><span>Banks &amp; financial institutions served</span></div>
+      <div class="metric"><b data-count="1" data-suffix="M+">1M+</b><span>Virtual prepaid cards in year one</span></div>
+      <div class="metric"><b data-count="100" data-suffix="K+">100K+</b><span>Daily transactions on a national switch</span></div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="wrap">
+      <div class="label">Trusted by banks, payment networks &amp; institutions across 4 continents</div>
+      <div class="marquee" aria-label="Clients">
+        <div class="marquee-track">
+          <span><i>◆</i>JN Bank · Jamaica</span><span><i>◆</i>National Commercial Bank · Jamaica</span><span><i>◆</i>National Health Fund · Jamaica</span><span><i>◆</i>BCEL · Laos</span><span><i>◆</i>Bconnex National Switch · Laos</span><span><i>◆</i>Lao Development Bank</span><span><i>◆</i>VietinBank · Vietnam</span><span><i>◆</i>VietA Bank · Vietnam</span><span><i>◆</i>Banco Confidence · Brazil</span><span><i>◆</i>BreachRx · USA</span>
+          <span aria-hidden="true"><i>◆</i>JN Bank · Jamaica</span><span aria-hidden="true"><i>◆</i>National Commercial Bank · Jamaica</span><span aria-hidden="true"><i>◆</i>National Health Fund · Jamaica</span><span aria-hidden="true"><i>◆</i>BCEL · Laos</span><span aria-hidden="true"><i>◆</i>Bconnex National Switch · Laos</span><span aria-hidden="true"><i>◆</i>Lao Development Bank</span><span aria-hidden="true"><i>◆</i>VietinBank · Vietnam</span><span aria-hidden="true"><i>◆</i>VietA Bank · Vietnam</span><span aria-hidden="true"><i>◆</i>Banco Confidence · Brazil</span><span aria-hidden="true"><i>◆</i>BreachRx · USA</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -254,6 +353,7 @@
       </div>
       <div class="grid2">
         <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12a3.5 3.5 0 0 0 1 7z"/><path d="M9 15h6M12 12v6"/></svg></div>
           <div class="tag">SaaS platforms</div>
           <h3>Enterprise SaaS, built to scale</h3>
           <p>Design and delivery of multi-tenant SaaS platforms with tenant isolation, security and compliance
@@ -261,6 +361,7 @@
           <div class="chips"><span class="chip">Multi-tenant architecture</span><span class="chip">Cloud-native</span><span class="chip">ISO 27001 · GDPR · HIPAA</span><span class="chip">CI/CD</span></div>
         </div>
         <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="11" rx="1.5"/><path d="M6 19h6"/><rect x="17" y="8" width="5" height="11" rx="1"/></svg></div>
           <div class="tag">Web &amp; mobile</div>
           <h3>Enterprise-grade web and mobile applications</h3>
           <p>Customer-facing and back-office applications for banks, government and enterprises, including
@@ -268,6 +369,7 @@
           <div class="chips"><span class="chip">Internet &amp; mobile banking</span><span class="chip">APIs &amp; microservices</span><span class="chip">Performance &amp; security testing</span></div>
         </div>
         <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 21h18"/></svg></div>
           <div class="tag">Banking modernisation</div>
           <h3>Legacy banking and payment platforms, worldwide</h3>
           <p>Deep experience running and modernising legacy core, card, switch and digital banking systems for
@@ -276,6 +378,7 @@
           <div class="chips"><span class="chip">Cards &amp; switches</span><span class="chip">ATM / POS</span><span class="chip">Visa · Mastercard · CUP</span><span class="chip">SOA integration</span></div>
         </div>
         <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="M5.6 6.4 9.8 10M18.4 6.4 14.2 10M5.6 17.6l4.2-3.6M18.4 17.6l-4.2-3.6"/></svg></div>
           <div class="tag">AI platforms</div>
           <h3>AI architecture and orchestration</h3>
           <p>Certified in building with Anthropic's Claude: designing AI platforms that orchestrate LLMs, agents,
@@ -582,6 +685,7 @@
       <span>Visakhapatnam, Andhra Pradesh, India</span>
     </div>
   </footer>
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
@@ -594,6 +698,48 @@
       root.dataset.theme = dark ? 'light' : 'dark';
       try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
     });
+
+    const header = document.querySelector('header'), bar = document.getElementById('progress'), toTop = document.getElementById('toTop');
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+      header.classList.toggle('scrolled', scrollY > 10);
+      toTop.classList.toggle('show', scrollY > 600);
+    };
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window) {
+      root.classList.add('js');
+      const items = document.querySelectorAll('.sec-head, .card, .job, .pillar, .about-grid > div:first-child, .contact-band');
+      items.forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; });
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: .12 });
+      items.forEach(el => io.observe(el));
+
+      const counted = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        counted.unobserve(e.target);
+        const el = e.target, end = +el.dataset.count, suf = el.dataset.suffix || '';
+        if (reduce) return;
+        const t0 = performance.now(), dur = 1400;
+        const step = t => {
+          const p = Math.min((t - t0) / dur, 1), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+          el.textContent = v + suf;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }), { threshold: .6 });
+      document.querySelectorAll('[data-count]').forEach(el => counted.observe(el));
+
+      const links = [...document.querySelectorAll('.links a')];
+      const spy = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }), { rootMargin: '-45% 0px -50% 0px' });
+      document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+    }
   </script>
 </body>
 </html>
