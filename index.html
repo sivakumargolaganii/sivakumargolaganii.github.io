@@ -10,7 +10,7 @@
   <meta property="og:type" content="profile">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/webp" href="profile.webp">
   <style>
     :root {
@@ -246,6 +246,61 @@
     .contact-band { position: relative; overflow: hidden; }
     .contact-band::after { content: ""; position: absolute; width: 380px; height: 380px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(212,176,106,.35), transparent 65%); pointer-events: none; }
     .contact-band > * { position: relative; z-index: 1; }
+
+    /* Elegant layer */
+    .serif, h1, h2, .profile-card h3, .metric b, .quote blockquote, .region .big { font-family: "Playfair Display", Georgia, serif; }
+    .hero h1 { font-weight: 700; letter-spacing: -.01em; font-size: clamp(36px, 4.6vw, 56px); }
+    .hero h1 .nick { font-family: Inter, sans-serif; font-weight: 600; font-size: .5em; letter-spacing: .06em; vertical-align: .3em; }
+    h2 { font-weight: 600; letter-spacing: -.005em; }
+    .profile-card h3 { font-weight: 600; font-size: 23px; }
+    .metric b { font-weight: 700; font-size: 42px; }
+    .hero .role { letter-spacing: .01em; }
+    .hero .role::after { content: ""; display: block; width: 64px; height: 1px; margin-top: 16px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, #12305a, #07162b 70%); animation: introOut .7s ease 1.1s forwards; pointer-events: none; }
+    .intro div { text-align: center; color: var(--gold); }
+    .intro b { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 64px; font-weight: 600; letter-spacing: .08em; animation: introIn .8s ease both; }
+    .intro i { display: block; height: 1px; width: 0; margin: 10px auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); animation: line 1s ease .2s forwards; }
+    @keyframes introIn { from { opacity: 0; transform: translateY(10px); letter-spacing: .3em; } to { opacity: 1; transform: none; } }
+    @keyframes line { to { width: 180px; } }
+    @keyframes introOut { to { opacity: 0; visibility: hidden; } }
+
+    section.dark { background: radial-gradient(900px 400px at 10% 0%, rgba(29,95,168,.35), transparent 60%), linear-gradient(180deg, var(--navy), var(--navy-2)); color: var(--on-navy); border-top: 0; }
+    .dark h2, .dark .card h3 { color: #fff; }
+    .dark .sec-head p, .dark .card p { color: var(--on-navy-muted); }
+    .dark .card { background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); border-color: rgba(255,255,255,.1); }
+    .dark .card:hover { border-color: rgba(212,176,106,.5); box-shadow: 0 24px 50px -28px rgba(0,0,0,.8); }
+    .dark .card .foot { border-color: rgba(255,255,255,.1); color: var(--on-navy-muted); }
+    .dark .card .foot b { color: var(--gold); }
+    section.dark + section { border-top: 0; }
+
+    .quote { padding: 88px 0; text-align: center; background: linear-gradient(180deg, transparent, var(--accent-soft) 50%, transparent); }
+    .quote .mark { font-family: "Playfair Display", Georgia, serif; font-size: 96px; line-height: .6; color: var(--gold); opacity: .8; }
+    .quote blockquote { margin: 18px auto 0; max-width: 860px; font-size: clamp(22px, 2.8vw, 32px); line-height: 1.45; font-style: italic; font-weight: 500; color: var(--text); }
+    .quote cite { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; font-style: normal; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .quote cite::before, .quote cite::after { content: ""; width: 36px; height: 1px; background: var(--gold); }
+
+    .regions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .region { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 30px 28px; overflow: hidden; }
+    .region::after { content: ""; position: absolute; right: -40px; top: -40px; width: 140px; height: 140px; border-radius: 50%; border: 1px solid rgba(184,145,63,.35); box-shadow: 0 0 0 18px rgba(184,145,63,.06), 0 0 0 36px rgba(184,145,63,.04); }
+    .region .big { font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+    .region p { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
+    .pins { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pin { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--bg); }
+    .pin::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(184,145,63,.2); }
+    .pin.onsite::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(29,95,168,.2); animation: ping 2s ease-out infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(29,95,168,.5); } 100% { box-shadow: 0 0 0 8px rgba(29,95,168,0); } }
+    .legend { margin-top: 16px; font-size: 13px; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .legend span.on::before { background: var(--accent); }
+
+    .card, .region, .job, .pillar { box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 8px 24px -20px rgba(10,31,60,.35); }
+    .dark .card { box-shadow: none; }
+    footer { border-top: 1px solid var(--line); }
+    footer .wrap span:first-child::before { content: "SK"; font-family: "Playfair Display", Georgia, serif; font-weight: 600; color: var(--gold); margin-right: 10px; letter-spacing: .06em; }
+    @media (max-width: 960px) { .regions { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .quote { padding: 64px 0; } .metric b { font-size: 34px; } }
     .to-top { position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(212,176,106,.5); background: var(--navy); color: var(--gold); font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease; box-shadow: 0 10px 24px -10px rgba(0,0,0,.6); }
     .to-top.show { opacity: 1; transform: none; }
 
@@ -264,6 +319,7 @@
   </style>
 </head>
 <body>
+  <div class="intro" aria-hidden="true"><div><b>SK</b><i></i></div></div>
   <div class="progress" id="progress"></div>
   <header>
     <div class="wrap">
@@ -335,7 +391,7 @@
 
   <div class="trust">
     <div class="wrap">
-      <div class="label">Trusted by banks, payment networks &amp; institutions across 4 continents</div>
+      <div class="label">Trusted by banks, payment networks &amp; institutions across Asia and the Americas</div>
       <div class="marquee" aria-label="Clients">
         <div class="marquee-track">
           <span><i>◆</i>JN Bank · Jamaica</span><span><i>◆</i>National Commercial Bank · Jamaica</span><span><i>◆</i>National Health Fund · Jamaica</span><span><i>◆</i>BCEL · Laos</span><span><i>◆</i>Bconnex National Switch · Laos</span><span><i>◆</i>Lao Development Bank</span><span><i>◆</i>VietinBank · Vietnam</span><span><i>◆</i>VietA Bank · Vietnam</span><span><i>◆</i>Banco Confidence · Brazil</span><span><i>◆</i>BreachRx · USA</span>
@@ -424,6 +480,14 @@
     </div>
   </section>
 
+  <div class="quote">
+    <div class="wrap">
+      <div class="mark" aria-hidden="true">“</div>
+      <blockquote>Predictable delivery is a leadership choice: clear governance, quality built in from the first sprint, and production so stable that a bank's customers never have to think about it.</blockquote>
+      <cite>Sivakumar Golagani (SK) · Leadership philosophy</cite>
+    </div>
+  </div>
+
   <section id="experience">
     <div class="wrap">
       <div class="sec-head">
@@ -494,7 +558,34 @@
     </div>
   </section>
 
-  <section id="programs">
+  <section id="footprint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="kicker">Global footprint</div><h2>Delivered across Asia and the Americas</h2></div>
+        <p>Onsite with bank teams where it mattered, and leading offshore delivery from India.</p>
+      </div>
+      <div class="regions">
+        <div class="region">
+          <div class="big">Asia</div>
+          <p>Delivery centre leadership in India and 2.5 years onsite across Indochina.</p>
+          <div class="pins"><span class="pin">India</span><span class="pin onsite">Laos</span><span class="pin">Vietnam</span><span class="pin">Cambodia</span></div>
+        </div>
+        <div class="region">
+          <div class="big">Caribbean &amp; Central America</div>
+          <p>Onsite in Kingston for internet banking security, then offshore managed services.</p>
+          <div class="pins"><span class="pin onsite">Jamaica</span><span class="pin">Central America</span></div>
+        </div>
+        <div class="region">
+          <div class="big">North &amp; South America</div>
+          <p>Prepaid card and SaaS programs for US and Brazilian clients.</p>
+          <div class="pins"><span class="pin">United States</span><span class="pin">Brazil</span></div>
+        </div>
+      </div>
+      <div class="legend"><span class="on">Onsite assignment</span><span>Offshore delivery</span></div>
+    </div>
+  </section>
+
+  <section id="programs" class="dark">
     <div class="wrap">
       <div class="sec-head">
         <div><div class="kicker">04 · Programs</div><h2>Selected programs delivered</h2></div>
@@ -712,7 +803,7 @@
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if ('IntersectionObserver' in window) {
       root.classList.add('js');
-      const items = document.querySelectorAll('.sec-head, .card, .job, .pillar, .about-grid > div:first-child, .contact-band');
+      const items = document.querySelectorAll('.sec-head, .card, .job, .pillar, .region, .quote blockquote, .about-grid > div:first-child, .contact-band');
       items.forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; });
       const io = new IntersectionObserver(es => es.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
