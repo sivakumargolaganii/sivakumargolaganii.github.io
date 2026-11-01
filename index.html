@@ -309,6 +309,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .js .reveal { opacity: 1; transform: none; }
+      .intro { display: none; }
     }
     @media (max-width: 620px) {
       .timeline { padding-left: 24px; }
@@ -790,6 +791,8 @@
       try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
     });
 
+    const intro = document.querySelector('.intro');
+    if (intro) setTimeout(() => intro.remove(), 1900);
     const header = document.querySelector('header'), bar = document.getElementById('progress'), toTop = document.getElementById('toTop');
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - innerHeight;
